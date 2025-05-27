@@ -15,15 +15,6 @@ void setup() {
   Serial.println("Initializing sensor...");
   
   dht.begin();
-  
-  float testHumidity = dht.readHumidity();
-  float testTemp = dht.readTemperature();
-  
-  if (isnan(testHumidity) || isnan(testTemp)) {
-    Serial.println("ERROR: Sensor not responding properly!");
-  } else {
-    Serial.println("Sensor initialized successfully!");
-  }
 }
 
 void loop() {
