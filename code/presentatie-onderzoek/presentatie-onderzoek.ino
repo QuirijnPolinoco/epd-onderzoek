@@ -16,16 +16,11 @@ void setup() {
   
   dht.begin();
   
-  // Test eerste meting
   float testHumidity = dht.readHumidity();
   float testTemp = dht.readTemperature();
   
   if (isnan(testHumidity) || isnan(testTemp)) {
     Serial.println("ERROR: Sensor not responding properly!");
-    Serial.println("Please check:");
-    Serial.println("1. Sensor connections (VCC, DATA, GND)");
-    Serial.println("2. 10kΩ pull-up resistor between VCC and DATA");
-    Serial.println("3. Power supply (should be 5V)");
   } else {
     Serial.println("Sensor initialized successfully!");
   }
@@ -34,15 +29,12 @@ void setup() {
 void loop() {
   unsigned long currentMillis = millis();
   
-  // Meet en toon waarden op interval
   if (currentMillis - previousMillis >= interval) {
     previousMillis = currentMillis;
     
-    // Lees sensor
     float humidity = dht.readHumidity();
     float temperature = dht.readTemperature();
     
-    // Debug informatie
     Serial.println("-------------------");
     
     if (isnan(humidity) || isnan(temperature)) {
