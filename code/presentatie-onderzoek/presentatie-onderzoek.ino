@@ -7,7 +7,7 @@
 // Variabelen
 DHT dht(DHTPIN, DHTTYPE);
 unsigned long previousMillis = 0;
-const long interval = 2000;  // Interval voor sensor metingen (2 seconden)
+const long INTERVAL = 2000;  // Interval voor sensor metingen (2 seconden)
 
 void setup() {
   Serial.begin(9600);
@@ -20,7 +20,7 @@ void setup() {
 void loop() {
   unsigned long currentMillis = millis();
   
-  if (currentMillis - previousMillis >= interval) {
+  if (currentMillis - previousMillis >= INTERVAL) {
     previousMillis = currentMillis;
     
     float humidity = dht.readHumidity();
